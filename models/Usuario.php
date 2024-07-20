@@ -51,17 +51,9 @@ class Usuario extends ActiveRecord
     public function validar_cuenta()
     {
         switch (true) {
-            case empty($this->nombre):
-                self::$alertas['error'][] = 'El Nombre es Obligatorio';
+            case $this->validar_nombre_apellido($this->nombre, 'Nombre'):
                 break;
-            case !preg_match('/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]+$/', $this->nombre):
-                self::$alertas['error'][] = 'El Nombre solo debe contener letras y sin espacios.';
-                break;
-            case empty($this->apellido):
-                self::$alertas['error'][] = 'El Apellido es Obligatorio';
-                break;
-            case !preg_match('/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]+$/', $this->apellido):
-                self::$alertas['error'][] = 'El Apellido solo debe contener letras y sin espacios.';
+            case $this->validar_nombre_apellido($this->apellido, 'Apellido'):
                 break;
             case $this->validar_email():
                 break;
@@ -71,7 +63,25 @@ class Usuario extends ActiveRecord
                 self::$alertas['error'][] = 'Los password son diferentes';
                 break;
         }
+        return self::$alertas;
+    }
 
+    public function validar_nombre_apellido($campo, $nombre_campo)
+    {
+        // Definir límites de caracteres
+        $limite_caracteres = 60;
+
+        switch (true) {
+            case empty($campo):
+                self::$alertas['error'][] = "El $nombre_campo es Obligatorio";
+                break;
+            case strlen($campo) > $limite_caracteres:
+                self::$alertas['error'][] = "El $nombre_campo no puede tener más de $limite_caracteres caracteres.";
+                break;
+            case !preg_match('/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\s]+$/', $campo):
+                self::$alertas['error'][] = "El $nombre_campo solo debe contener letras y espacios.";
+                break;
+        }
         return self::$alertas;
     }
 
@@ -79,11 +89,16 @@ class Usuario extends ActiveRecord
     // Valida un email
     public function validar_email()
     {
-        if (!$this->email) {
-            self::$alertas['error'][] = 'El Email es Obligatorio';
-        }
-        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            self::$alertas['error'][] = 'Email no válido';
+        switch (true) {
+            case empty($this->email):
+                self::$alertas['error'][] = 'El Email es Obligatorio.';
+                break;
+            case strlen($this->email) > 255:
+                self::$alertas['error'][] = 'El Email no puede tener más de 255 caracteres.';
+                break;
+            case !filter_var($this->email, FILTER_VALIDATE_EMAIL):
+                self::$alertas['error'][] = 'El Email no es Valido.';
+                break;
         }
         return self::$alertas;
     }
