@@ -82,7 +82,7 @@ class Email
         $contenido .= '<h2 style="color: #007bff;">Reestablecer Contraseña en DevWebCamp</h2>';
         $contenido .= '<p>Hola <strong>' . $this->nombre . '</strong>,</p>';
         $contenido .= '<p>Has solicitado reestablecer tu contraseña en DevWebCamp. Para continuar, haz clic en el siguiente enlace:</p>';
-        $contenido .= '<p style="text-align: center; margin-top: 20px;"><a style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 3px;" href="' . $_ENV['HOST'] . '/recuperar?token=' . $this->token . '">Reestablecer Contraseña</a></p>';
+        $contenido .= '<p style="text-align: center; margin-top: 20px;"><a style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 3px;" href="' . $_ENV['HOST'] . '/reestablecer?token=' . $this->token . '">Reestablecer Contraseña</a></p>';
         $contenido .= '<p>Si no solicitaste este cambio, puedes ignorar este mensaje.</p>';
         $contenido .= '<p>Gracias,<br>El equipo de DevWebCamp</p>';
         $contenido .= '</div>';

@@ -2,10 +2,12 @@
     <h2 class="auth__heading"><?php echo $titulo; ?></h2>
     <p class="auth__texto">Inicia sesion en DevWebCamp</p>
 
-    <form action="" method="post" class="formulario">
+    <?php include_once __DIR__ . '/../templates/alertas.php' ?>
+
+    <form action="/login" method="post" class="formulario">
         <div class="formulario__campo">
             <label for="email" class="formulario__label">Email</label>
-            <input type="email" id="email" name="email" placeholder="Tu email" class="formulario__input">
+            <input type="email" id="email" name="email" placeholder="Tu email" class="formulario__input" value="<?php echo s($usuario->email); ?>">
         </div>
         <div class="formulario__campo">
             <label for="password" class="formulario__label">Password</label>
