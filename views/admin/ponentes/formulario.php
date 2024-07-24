@@ -17,11 +17,6 @@
     </div>
 
     <div class="formulario__campo">
-        <label for="ciudad" class="formulario__label">Ciudad</label>
-        <input type="text" class="formulario__input" id="ciudad" name="ciudad" placeholder="Ciudad del Ponente" value="<?php echo $ponente->ciudad ?? '' ?>">
-    </div>
-
-    <div class="formulario__campo">
         <label for="pais" class="formulario__label">Pais</label>
         <input type="text" class="formulario__input" id="pais" name="pais" placeholder="Pais del Ponente" value="<?php echo $ponente->pais ?? '' ?>">
     </div>

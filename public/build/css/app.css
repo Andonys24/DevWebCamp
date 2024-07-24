@@ -435,6 +435,31 @@ h3 {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+.formulario__listado {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.formulario__listado > li {
+  background-color: #007df4;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+.formulario__listado li {
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.formulario__listado li:hover {
+  transform: scale(1.1);
+  background-color: #0063c1;
+  cursor: pointer;
+}
 .formulario__submit {
   background-color: #007df4;
   padding: 1.5rem 4rem;
@@ -779,6 +804,10 @@ h3 {
 }
 .dashboard__logo {
   font-size: clamp(2rem, -0.8rem + 10vw, 3rem);
+  transition: transform 0.3s ease-in-out;
+}
+.dashboard__logo:hover {
+  transform: scale(1.05);
 }
 .dashboard__form {
   display: flex;
@@ -800,6 +829,7 @@ h3 {
 .dashboard__grid {
   display: flex;
   flex: 1;
+  overflow-y: auto;
 }
 .dashboard__sidebar {
   background-color: #2f405d;
@@ -838,6 +868,7 @@ h3 {
 .dashboard__contenido {
   padding: 1rem 1rem 3rem 1rem;
   width: 100%;
+  overflow-y: scroll;
 }
 @media (min-width: 768px) {
   .dashboard__contenido {
