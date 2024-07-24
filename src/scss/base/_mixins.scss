@@ -132,3 +132,18 @@
 		display: none;
 	}
 }
+
+@mixin enlace {
+	all: unset;
+	color: v.$blanco;
+	font-size: 1.4rem;
+	text-transform: uppercase;
+	font-weight: v.$bold;
+	transition: color 0.3s ease, transform 0.3s ease;
+
+	&:hover {
+		transform: scale(1.1);
+		cursor: pointer;
+		color: v.$azul;
+	}
+}

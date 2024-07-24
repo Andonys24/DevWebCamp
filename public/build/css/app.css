@@ -307,6 +307,7 @@ template {
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+  height: 100%;
 }
 
 *,
@@ -446,6 +447,7 @@ h3 {
   }
 }
 .header__enlace {
+  all: unset;
   color: #ffffff;
   font-size: 1.4rem;
   text-transform: uppercase;
@@ -454,6 +456,7 @@ h3 {
 }
 .header__enlace:hover {
   transform: scale(1.1);
+  cursor: pointer;
   color: #007df4;
 }
 .header__contenido {
@@ -687,5 +690,105 @@ h3 {
   background-color: #abfeab;
   border-left: 0.5rem solid #02db02;
   color: #017601;
+}
+
+.dashboard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fafc;
+}
+.dashboard__header {
+  background-color: #1e293b;
+  padding: 2rem;
+}
+.dashboard__header-grid {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .dashboard__header-grid {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.dashboard__logo {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+@media (min-width: 1024px) {
+  .dashboard__logo {
+    text-align: left;
+    margin: 0;
+  }
+}
+.dashboard__logo {
+  font-size: clamp(2rem, -0.8rem + 10vw, 3rem);
+}
+.dashboard__form {
+  display: flex;
+  justify-content: center;
+}
+.dashboard__submit--logout {
+  all: unset;
+  color: #ffffff;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.dashboard__submit--logout:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  color: #007df4;
+}
+.dashboard__grid {
+  display: flex;
+  flex: 1;
+}
+.dashboard__sidebar {
+  background-color: #2f405d;
+  width: 12rem;
+}
+.dashboard__menu {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.dashboard__enlace, .dashboard__enlace--actual {
+  color: #6f8ab6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.dashboard__enlace:hover, .dashboard__enlace--actual, .dashboard__enlace--actual:hover, .dashboard__enlace--actual--actual {
+  transform: scale(1.05);
+  background-color: #40587f;
+  color: #ffffff;
+}
+.dashboard__icono {
+  font-size: 2rem;
+}
+.dashboard__menu-texto {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+.dashboard__contenido {
+  padding: 1rem 1rem 3rem 1rem;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .dashboard__contenido {
+    padding: 1rem 5rem 3rem 5rem;
+  }
 }
 /*# sourceMappingURL=app.css.map */
