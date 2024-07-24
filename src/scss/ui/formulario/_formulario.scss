@@ -5,11 +5,58 @@
 	display: flex;
 	flex-direction: column;
 
+	&__fieldset {
+		border: none;
+		margin-top: 1rem;
+		padding: 0;
+	}
+
+	&__legend {
+		color: v.$gris;
+		font-size: 2.2rem;
+		margin-bottom: 2rem;
+	}
+
 	&__campo {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 		margin: 1.5rem 0;
+
+		&--password {
+			position: relative;
+		}
+	}
+
+	&__contenedor-icono {
+		display: flex;
+		border-radius: 0.5rem;
+		overflow: hidden;
+	}
+
+	&__icono {
+		background-color: v.$gris-oscuro;
+		width: 4rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		i {
+			color: v.$blanco;
+			font-size: 2rem;
+		}
+	}
+
+	&__eye {
+		position: absolute;
+		top: 70%;
+		right: 1rem;
+		transform: translateY(-50%);
+		cursor: pointer;
+		transition: transform 0.3s ease-in-out;
+		&:hover {
+			transform: translateY(-50%) scale(1.1);
+		}
 	}
 
 	&__Label {
@@ -22,6 +69,17 @@
 		padding: 1rem;
 		border: 1px solid darken($color: v.$gris-claro, $amount: 20%);
 		border-radius: 0.5rem;
+
+		&--file {
+			border: none;
+		}
+
+		&--sociales {
+			@extend .formulario__input;
+			flex: 1;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
 	}
 
 	&__submit {
@@ -29,6 +87,9 @@
 		& {
 			width: auto;
 			align-self: flex-start;
+		}
+		&--registrar {
+			width: 100%;
 		}
 	}
 }

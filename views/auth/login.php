@@ -9,9 +9,10 @@
             <label for="email" class="formulario__label">Email</label>
             <input type="email" id="email" name="email" placeholder="Tu email" class="formulario__input" value="<?php echo s($usuario->email); ?>">
         </div>
-        <div class="formulario__campo">
+        <div class="formulario__campo formulario__campo--password">
             <label for="password" class="formulario__label">Password</label>
             <input type="password" id="password" name="password" placeholder="Tu Password" class="formulario__input">
+            <i class="fa-solid fa-eye formulario__eye" id="eye-icon"></i>
         </div>
 
         <input type="submit" value="Iniciar Sesión" class="formulario__submit">
