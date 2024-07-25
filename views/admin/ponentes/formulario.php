@@ -100,7 +100,4 @@
         </div>
     </div>
 
-    <div id="tags" class="formulario__listado"></div>
-    <input type="hidden" name="tags" value="<?php echo $ponente->tags ?? ''; ?>">
-
 </fieldset>
