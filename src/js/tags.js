@@ -4,7 +4,17 @@
 	if (tagsInput) {
 		const tagsDiv = document.getElementById("tags");
 		const tagsInputHidden = document.querySelector("[name='tags']");
+
 		let tags = new Set();
+
+		// Recuperar del input oculto
+		if (tagsInputHidden.value !== "") {
+			const tagValues = tagsInputHidden.value.split(",");
+			tagValues.forEach((tag) => {
+				tags.add(tag.trim());
+			});
+			mostrarTags();
+		}
 
 		tagsInput.addEventListener("keypress", guardarTag);
 
