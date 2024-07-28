@@ -4,17 +4,33 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Ponente;
+use Classes\Paginacion;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class PonentesController
 {
     public static function index(Router $router)
     {
+
+        $pagina_actual = $_GET['page'];
+        $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
+        if (!$pagina_actual || $pagina_actual < 1) {
+            header('Location: /admin/ponentes?page=1');
+        }
+
+        $registros_por_pagina = 10;
+        $total = Ponente::total();
+        $paginacion = new Paginacion($pagina_actual, $registros_por_pagina, $total);
+
+        if ($paginacion->total_paginas() < $pagina_actual) {
+            header('Location: /admin/ponentes?page=' . $paginacion->total_paginas());
+        }
+
+        $ponentes = Ponente::paginar($registros_por_pagina, $paginacion->offset());
+
         if (!is_admin()) {
             header('Location: /login');
         }
-
-        $ponentes = Ponente::all();
 
         $alertas = [];
 
@@ -27,7 +43,8 @@ class PonentesController
         $router->render('admin/ponentes/index', [
             'titulo' => 'Ponentes / Conferencistas',
             'alertas' => $alertas,
-            'ponentes' => $ponentes
+            'ponentes' => $ponentes,
+            'paginacion' => $paginacion->paginacion()
         ]);
     }
 
