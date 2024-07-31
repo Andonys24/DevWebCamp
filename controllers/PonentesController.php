@@ -12,7 +12,7 @@ class PonentesController
     public static function index(Router $router)
     {
 
-        $pagina_actual = $_GET['page'];
+        $pagina_actual = $_GET['page'] ?? null;
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
         if (!$pagina_actual || $pagina_actual < 1) {
             header('Location: /admin/ponentes?page=1');
@@ -95,7 +95,7 @@ class PonentesController
                 $resultado = $ponente->guardar();
 
                 if ($resultado) {
-                    header('Location: /admin/ponentes?page=1&&mensaje=1');
+                    header('Location: /admin/ponentes?page=1&mensaje=1');
                 }
             }
         }
@@ -173,7 +173,7 @@ class PonentesController
                 $resultado = $ponente->guardar();
 
                 if ($resultado) {
-                    header('Location: /admin/ponentes?page=1&&mensaje=2');
+                    header('Location: /admin/ponentes?page=1&mensaje=2');
                 }
             }
         }
@@ -200,7 +200,7 @@ class PonentesController
             }
             $resultado = $ponente->eliminar();
             if ($resultado) {
-                header('Location: /admin/ponentes?page=1&&mensaje=3');
+                header('Location: /admin/ponentes?page=1&mensaje=3');
             }
         }
     }

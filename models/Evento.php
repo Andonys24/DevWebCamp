@@ -33,14 +33,15 @@ class Evento extends ActiveRecord
         switch (true) {
             case empty($this->nombre):
                 self::$alertas['error'][] = "El nombre es Obligatorio";
-            case !preg_match('/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\s]+$/', $this->nombre):
+                break;
+            case !preg_match('/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\s\.\-\,0-9]+$/', $this->nombre):
                 self::$alertas['error'][] = "El nombre solo debe contener letras y espacios.";
                 break;
             case empty($this->descripcion):
                 self::$alertas['error'][] = "La descripción es Obligatoria";
                 break;
-            case !preg_match('/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\s\.\,0-9]+$/', $this->descripcion):
-                self::$alertas['error'][] = "La descripción solo debe contener letras, números, puntos, comas y espacios.";
+            case !preg_match('/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\s\.\,0-9"\'\(\)\+\-\*\/]+$/', $this->descripcion):
+                self::$alertas['error'][] = "La descripción tiene algun caracter no permitido";
                 break;
             case $this->validar_entero($this->categoria_id, 'La categoria'):
                 break;

@@ -40,7 +40,7 @@ function javascript() {
 		.pipe(sourcemaps.init())
 		.pipe(concat("bundle.js"))
 		.pipe(terser())
-		.pipe(sourcemaps.write("."))
+		.pipe(sourcemaps.write(".", { sourceMappingURL: (file) => `${file.basename}.min.map` }))
 		.pipe(rename({ suffix: ".min" }))
 		.pipe(dest("./public/build/js"));
 }
