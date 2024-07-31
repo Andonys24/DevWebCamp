@@ -33,12 +33,12 @@ class PonentesController
         }
 
         $alertas = [];
-
         $mensaje = $_GET['mensaje'] ?? null;
 
         if ($mensaje) {
-            Ponente::setAlerta('exito', mensajeAlerta($mensaje));
+            Ponente::setAlerta('exito', mensajeAlerta($mensaje, 'Ponente'));
         }
+
         $alertas = Ponente::getAlertas();
         $router->render('admin/ponentes/index', [
             'titulo' => 'Ponentes / Conferencistas',
@@ -95,7 +95,7 @@ class PonentesController
                 $resultado = $ponente->guardar();
 
                 if ($resultado) {
-                    header('Location: /admin/ponentes?mensaje=2');
+                    header('Location: /admin/ponentes?page=1&&mensaje=1');
                 }
             }
         }
@@ -173,7 +173,7 @@ class PonentesController
                 $resultado = $ponente->guardar();
 
                 if ($resultado) {
-                    header('Location: /admin/ponentes?mensaje=3');
+                    header('Location: /admin/ponentes?page=1&&mensaje=2');
                 }
             }
         }
@@ -200,7 +200,7 @@ class PonentesController
             }
             $resultado = $ponente->eliminar();
             if ($resultado) {
-                header('Location: /admin/ponentes?mensaje=4');
+                header('Location: /admin/ponentes?page=1&&mensaje=3');
             }
         }
     }

@@ -18,25 +18,6 @@ function pagina_actual($path)
     return str_contains($_SERVER['PATH_INFO'], $path) ? true : false;
 }
 
-function mensajeAlerta($variable)
-{
-    switch ($variable) {
-        case '1':
-            $mensaje = 'Tu password ha sido actualizado correctamente';
-            break;
-        case '2':
-            $mensaje = 'El ponente fue registrado correctamente';
-            break;
-        case '3':
-            $mensaje = 'El ponente fue actualizado correctamente';
-            break;
-        case '4':
-            $mensaje = 'El ponente fue eliminado correctamente';
-            break;
-    }
-    return $mensaje;
-}
-
 function is_auth(): bool
 {
     if (!isset($_SESSION)) {
@@ -51,4 +32,19 @@ function is_admin(): bool
         session_start();
     }
     return isset($_SESSION['admin']) && !empty($_SESSION['admin']);
+}
+
+function mensajeAlerta($codigo, $entidad = 'Elemento')
+{
+    $acciones = [
+        '1' => 'registrado',
+        '2' => 'actualizado',
+        '3' => 'eliminado'
+    ];
+
+    if (isset($acciones[$codigo])) {
+        return "El $entidad fue {$acciones[$codigo]} correctamente";
+    } else {
+        return "Código de mensaje no válido";
+    }
 }

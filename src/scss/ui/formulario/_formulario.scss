@@ -65,7 +65,9 @@
 		color: rgba($color: v.$negro, $alpha: 0.8);
 	}
 
-	&__input {
+	&__input,
+	&__select,
+	&__textarea {
 		padding: 1rem;
 		border: 1px solid darken($color: v.$gris-claro, $amount: 20%);
 		border-radius: 0.5rem;
@@ -82,14 +84,24 @@
 		}
 	}
 
-	&__texto{
+	&__textarea {
+		resize: vertical;
+		max-height: 30rem;
+		min-height: 15rem;
+	}
+
+	&__radio {
+		display: flex;
+		gap: 2rem;
+	}
+
+	&__texto {
 		margin-top: 3rem;
 	}
 
-	&__imagen{
+	&__imagen {
 		max-width: 20rem;
 	}
-	
 
 	&__listado {
 		@include m.tags;
