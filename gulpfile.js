@@ -19,6 +19,9 @@ const terser = require("gulp-terser-js");
 const concat = require("gulp-concat");
 const rename = require("gulp-rename");
 
+// webpack
+const webpack = require("webpack-stream");
+
 const paths = {
 	scss: "src/scss/**/*.scss",
 	js: "src/js/**/*.js",
@@ -36,13 +39,30 @@ function css() {
 	);
 }
 function javascript() {
-	return src(paths.js)
-		.pipe(sourcemaps.init())
-		.pipe(concat("bundle.js"))
-		.pipe(terser())
-		.pipe(sourcemaps.write(".", { sourceMappingURL: (file) => `${file.basename}.min.map` }))
-		.pipe(rename({ suffix: ".min" }))
-		.pipe(dest("./public/build/js"));
+	return (
+		src(paths.js)
+			.pipe(
+				webpack({
+					module: {
+						rules: [
+							{
+								test: /\.css$/i,
+								use: ["style-loader", "css-loader"],
+							},
+						],
+					},
+					mode: "production",
+					watch: true,
+					entry: "./src/js/app.js",
+				})
+			)
+			.pipe(sourcemaps.init())
+			// .pipe(concat("bundle.js"))
+			.pipe(terser())
+			.pipe(sourcemaps.write(".", { sourceMappingURL: (file) => `${file.basename}.min.map` }))
+			.pipe(rename({ suffix: ".min" }))
+			.pipe(dest("./public/build/js"))
+	);
 }
 
 function imagenes() {
