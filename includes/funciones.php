@@ -15,7 +15,7 @@ function s($html): string
 
 function pagina_actual($path)
 {
-    return str_contains($_SERVER['PATH_INFO'], $path) ? true : false;
+    return str_contains($_SERVER['PATH_INFO'] ?? '/', $path) ? true : false;
 }
 
 function is_auth(): bool
@@ -47,4 +47,11 @@ function mensajeAlerta($codigo, $entidad = 'Elemento')
     } else {
         return "Código de mensaje no válido";
     }
+}
+
+function aos_animacion(): void
+{
+    $efectos = ['fade-up', 'fade-down', 'fade-left', 'fade-right', 'zoom-in', 'zoom-in-up', 'zoom-in-down', 'zoom-out', 'zoom-in-left', 'zoom-in-right'];
+    $efecto = array_rand($efectos, 1);
+    echo 'data-aos="' . $efectos[$efecto] . '" ';
 }
