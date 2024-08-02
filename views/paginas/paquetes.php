@@ -8,7 +8,7 @@
             <ul class="paquete__lista">
                 <li class="paquete__elemento">Acceso virtual a DevWebCamp</li>
             </ul>
-            <p class="paquete__precio">L.0</p>
+            <p class="paquete__precio">$0</p>
         </div>
         <div class="paquete">
             <h3 class="paquete__nombre">Pase Presencial</h3>
@@ -20,7 +20,7 @@
                 <li class="paquete__elemento">Camisa del Evento</li>
                 <li class="paquete__elemento">Comida y Bebida</li>
             </ul>
-            <p class="paquete__precio">L.2495.99</p>
+            <p class="paquete__precio">$199</p>
         </div>
         <div class="paquete">
             <h3 class="paquete__nombre">Pase Virtual</h3>
@@ -30,7 +30,7 @@
                 <li class="paquete__elemento">Enlace a Talleres y conferencias</li>
                 <li class="paquete__elemento">Acceso a las Grabaciones</li>
             </ul>
-            <p class="paquete__precio">L.715.99</p>
+            <p class="paquete__precio">$49</p>
         </div>
     </div>
 </main>
