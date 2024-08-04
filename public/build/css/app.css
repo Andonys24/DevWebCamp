@@ -538,6 +538,35 @@ h3 {
 .evento__autor-nombre {
   font-weight: 700;
 }
+.evento__agregar {
+  background-color: #ffffff;
+  padding: 1.5rem 4rem;
+  color: #1a1b15;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  border-radius: 0.5rem;
+}
+.evento__agregar:hover {
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+.evento__agregar {
+  margin-top: 1rem;
+  transition: scale 0.3s ease;
+}
+.evento__agregar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.evento__agregar:hover {
+  scale: 1.05;
+}
 
 .resumen {
   background-image: linear-gradient(to right, rgba(0, 125, 244, 0.7), rgba(0, 125, 244, 0.9)), url(../img/bg_numeros.jpg);
@@ -1013,7 +1042,7 @@ h3 {
   width: auto;
   align-self: flex-start;
 }
-.formulario__submit--registrar {
+.formulario__submit--registrar, .formulario__submit--full {
   width: 100%;
 }
 
@@ -1344,6 +1373,17 @@ h3 {
   color: #017601;
 }
 
+.swal2-popup {
+  font-size: 16px;
+  width: 500px;
+}
+.swal2-title {
+  font-size: 24px;
+}
+.swal2-text {
+  font-size: 18px;
+}
+
 .dashboard {
   height: 100%;
   display: flex;
@@ -1617,5 +1657,108 @@ h3 {
 .listado-ponentes__ponente--seleccionado {
   background-color: #007df4;
   color: #ffffff;
+}
+
+.evento-registro {
+  width: min(95%, 140rem);
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .evento-registro {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .evento-registro__listado {
+    flex: 0 0 60%;
+  }
+}
+.evento-registro__grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 768px) {
+  .evento-registro__grid {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.evento-registro__heading--conferencias, .evento-registro__heading--workshops {
+  white-space: nowrap;
+  font-size: clamp(2rem, -0.8rem + 10vw, 5rem);
+}
+.evento-registro__heading--conferencias {
+  color: #007df4;
+}
+.evento-registro__heading--workshops {
+  color: #00c8c2;
+  margin-top: 5rem;
+}
+.evento-registro__fecha {
+  margin: 6rem 0 3rem;
+}
+
+.registro {
+  background-color: #e3ebf3;
+  padding: 3rem;
+  border-radius: 1rem;
+}
+@media (min-width: 768px) {
+  .registro {
+    flex: 0 0 40%;
+    position: sticky;
+    top: 3rem;
+  }
+}
+.registro__heading {
+  margin: 0 0 3rem 0;
+}
+.registro__evento {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.registro__evento:nth-child(even) {
+  background-color: #f1f5f9;
+  border-radius: 1px;
+}
+.registro__nombre {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.registro__eliminar {
+  all: unset;
+  color: rgb(169, 0, 0);
+  transition: scale 0.3s ease-in;
+}
+.registro__eliminar:hover {
+  cursor: pointer;
+  scale: 1.1;
+  color: #900000;
+}
+.registro__texto {
+  text-align: center;
+}
+.registro__regalo {
+  margin-top: 3rem;
+}
+.registro__label {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.registro__select {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #64748b;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 /*# sourceMappingURL=app.css.map */

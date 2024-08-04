@@ -93,4 +93,21 @@
 	&__autor-nombre {
 		font-weight: v.$bold;
 	}
+
+	&__agregar{
+		@include m.boton(v.$blanco, v.$negro);
+		&{
+			margin-top: 1rem;
+			transition: scale 0.3s ease;
+
+			&:disabled{
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+
+			&:hover{
+				scale: 1.05;
+			}
+		}
+	}
 }

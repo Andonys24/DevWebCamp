@@ -6,7 +6,7 @@ use Model\ActiveRecord;
 require __DIR__ . '/../vendor/autoload.php';
 
 // Añadir Dotenv
-$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv::createImmutable(__DIR__, 'DevWebCamp.env');
 $dotenv->safeLoad();
 
 require 'funciones.php';

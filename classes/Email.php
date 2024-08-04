@@ -27,10 +27,11 @@ class Email
         $mail->Host = $_ENV['EMAIL_HOST'];
         $mail->SMTPAuth = true;
         $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->SMTPSecure = $_ENV['EMAIL_SECURE'];
         $mail->Username = $_ENV['EMAIL_USER'];
         $mail->Password = $_ENV['EMAIL_PASS'];
 
-        $mail->setFrom('cuentas@devwebcamp.com');
+        $mail->setFrom('cuentas@devwebcamp.com', 'DevWebCamp');
         $mail->addAddress($this->email, $this->nombre);
         $mail->Subject = 'Confirma tu Cuenta en DevWebCamp';
 
@@ -65,10 +66,11 @@ class Email
         $mail->Host = $_ENV['EMAIL_HOST'];
         $mail->SMTPAuth = true;
         $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->SMTPSecure = $_ENV['EMAIL_SECURE'];
         $mail->Username = $_ENV['EMAIL_USER'];
         $mail->Password = $_ENV['EMAIL_PASS'];
 
-        $mail->setFrom('cuentas@devwebcamp.com');
+        $mail->setFrom('cuentas@devwebcamp.com', 'DevWebCamp');
         $mail->addAddress($this->email, $this->nombre);
         $mail->Subject = 'Reestablecimiento de Contraseña en DevWebCamp';
 
