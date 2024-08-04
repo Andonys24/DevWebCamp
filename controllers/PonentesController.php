@@ -12,6 +12,11 @@ class PonentesController
     public static function index(Router $router)
     {
 
+        if (!is_admin()) {
+            header('Location: /login');
+            return;
+        }
+
         $pagina_actual = $_GET['page'] ?? null;
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
         if (!$pagina_actual || $pagina_actual < 1) {
@@ -27,10 +32,6 @@ class PonentesController
         }
 
         $ponentes = Ponente::paginar($registros_por_pagina, $paginacion->offset());
-
-        if (!is_admin()) {
-            header('Location: /login');
-        }
 
         $alertas = [];
         $mensaje = $_GET['mensaje'] ?? null;
@@ -52,6 +53,7 @@ class PonentesController
     {
         if (!is_admin()) {
             header('Location: /login');
+            return;
         }
 
         $alertas = [];
@@ -61,6 +63,7 @@ class PonentesController
 
             if (!is_admin()) {
                 header('Location: /login');
+                return;
             }
 
             if (!empty($_FILES['imagen']['tmp_name'])) {
@@ -112,6 +115,7 @@ class PonentesController
     {
         if (!is_admin()) {
             header('Location: /login');
+            return;
         }
 
         $alertas = [];
@@ -130,6 +134,7 @@ class PonentesController
 
         if (!$ponente) {
             header('Location: /admin/ponentes');
+            return;
         }
 
         $ponente->imagen_actual = $ponente->imagen;
@@ -138,6 +143,7 @@ class PonentesController
 
             if (!is_admin()) {
                 header('Location: /login');
+                return;
             }
 
             if (!empty($_FILES['imagen']['tmp_name'])) {
@@ -191,6 +197,7 @@ class PonentesController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!is_admin()) {
                 header('Location: /login');
+                return;
             }
 
             $id = $_POST['id'];

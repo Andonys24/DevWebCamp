@@ -2,17 +2,19 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
-use Controllers\APIEventos;
-use Controllers\APIPonentes;
 use MVC\Router;
+use Controllers\APIEventos;
+use Controllers\APIGraficos;
+use Controllers\APIRegalos;
+use Controllers\APIPonentes;
 use Controllers\AuthController;
-use Controllers\DashboardController;
 use Controllers\EventosController;
 use Controllers\PaginasController;
-use Controllers\PonentesController;
 use Controllers\RegalosController;
-use Controllers\RegistradosController;
+use Controllers\PonentesController;
 use Controllers\RegistroController;
+use Controllers\DashboardController;
+use Controllers\RegistradosController;
 
 $router = new Router();
 
@@ -49,6 +51,10 @@ $router->get('/admin/ponentes/editar', [PonentesController::class, 'editar']);
 $router->post('/admin/ponentes/editar', [PonentesController::class, 'editar']);
 $router->post('/admin/ponentes/eliminar', [PonentesController::class, 'eliminar']);
 
+// Api de ponentes
+$router->get('/api/ponentes', [APIPonentes::class, 'index']);
+$router->get('/api/ponente', [APIPonentes::class, 'ponente']);
+
 // Area de eventos
 $router->get('/admin/eventos', [EventosController::class, 'index']);
 $router->get('/admin/eventos/crear', [EventosController::class, 'crear']);
@@ -56,16 +62,27 @@ $router->post('/admin/eventos/crear', [EventosController::class, 'crear']);
 $router->get('/admin/eventos/editar', [EventosController::class, 'editar']);
 $router->post('/admin/eventos/editar', [EventosController::class, 'editar']);
 $router->post('/admin/eventos/eliminar', [EventosController::class, 'eliminar']);
+
 // Api de eventos
 $router->get('/api/eventos-horario', [APIEventos::class, 'index']);
-$router->get('/api/ponentes', [APIPonentes::class, 'index']);
-$router->get('/api/ponente', [APIPonentes::class, 'ponente']);
+$router->get('/api/eventos', [APIGraficos::class, 'eventos']);
 
 // Area de Usuarios registrados
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 
 // Area de Regalos
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
+$router->get('/admin/regalos/crear', [RegalosController::class, 'crear']);
+$router->post('/admin/regalos/crear', [RegalosController::class, 'crear']);
+$router->get('/admin/regalos/editar', [RegalosController::class, 'editar']);
+$router->post('/admin/regalos/editar', [RegalosController::class, 'editar']);
+$router->post('/admin/regalos/eliminar', [RegalosController::class, 'eliminar']);
+
+// Api de Regalos
+$router->get('/api/regalos', [APIGraficos::class, 'regalos']);
+
+// API de ingresos
+$router->get('/api/ingresos', [APIGraficos::class, 'ingresos']);
 
 // Registro de usuarios
 $router->get('/finalizar-registro', [RegistroController::class, 'crear']);

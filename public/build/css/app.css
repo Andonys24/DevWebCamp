@@ -1536,6 +1536,10 @@ h3 {
   width: min(95%, 80rem);
   margin: 0 auto;
 }
+.dashboard__grafica {
+  width: min(95%, 60rem);
+  margin: 0 auto;
+}
 
 .table {
   width: 100%;
@@ -1657,6 +1661,82 @@ h3 {
 .listado-ponentes__ponente--seleccionado {
   background-color: #007df4;
   color: #ffffff;
+}
+
+.bloques,
+.etiquetas {
+  width: min(95%, 140rem);
+  margin: 0 auto;
+}
+@media (min-width: 1024px) {
+  .bloques,
+  .etiquetas {
+    margin-top: 10rem;
+  }
+}
+.bloques__grid,
+.etiquetas__grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 1024px) {
+  .bloques__grid,
+  .etiquetas__grid {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.etiquetas {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 3rem;
+}
+@media (min-width: 1024px) {
+  .etiquetas {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.etiqueta {
+  padding: 1rem;
+  background-color: #1e293b;
+  color: #ffffff;
+}
+.etiqueta__heading {
+  margin: 0;
+  font-size: 2.4rem;
+  padding: 2rem;
+}
+.etiqueta__texto {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.etiqueta, .bloque {
+  border: 1px solid #64748b;
+  border-radius: 1rem;
+}
+
+.bloque {
+  padding: 2rem;
+  color: #1a1b15;
+}
+.bloque__heading {
+  margin: 1rem 0 2rem 0;
+  font-size: 3.4rem;
+}
+.bloque__texto {
+  margin: 1rem 0;
+}
+.bloque__grafico {
+  width: auto !important;
+  height: auto !important;
 }
 
 .evento-registro {
